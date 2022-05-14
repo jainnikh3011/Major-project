@@ -44,7 +44,7 @@
 		String query="select p.pid,i.quantity,p.pname,p.manufacturer,p.mfg,p.exp,p.price from product p,inventory i where p.pid=i.pid and i.sid=?";
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/drugdatabase","root","Change@3011");
+					conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/drugdatabase","ashu","ashu14mysql");
 			ps=conn.prepareStatement(query);
 			ps.setString(1,guid);
 			rs=ps.executeQuery();

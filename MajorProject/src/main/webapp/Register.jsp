@@ -30,7 +30,7 @@
 
 		try{		
 			Class.forName("com.mysql.jdbc.Driver");
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/drugdatabase","root","Change@3011");
+					conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/drugdatabase","ashu","ashu14mysql");
 			ps1=conn.prepareStatement(query1);
 			ps1.setString(1,uid1);
 			rs=ps1.executeQuery();

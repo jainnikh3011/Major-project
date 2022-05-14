@@ -24,7 +24,7 @@ String query1="select P.pid,O.sid,P.price from inventory o,product p where p.pid
 String query2="insert into orders(pid,sid,uid,quantity,price) values(?,?,?,?,?)";
 try{
 	Class.forName("com.mysql.jdbc.Driver");
-	conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/drugdatabase","root","Change@3011");
+			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/drugdatabase","ashu","ashu14mysql");
 	ps=conn.prepareStatement(query1);
 	ps.setString(1,pid);
 	rs=ps.executeQuery();
@@ -40,7 +40,11 @@ try{
 		ps2.setInt(4,qr);
 		ps2.setInt(5,qr*c);
 		int i=ps2.executeUpdate();
-		response.sendRedirect("Orders.jsp");
+	//	response.sendRedirect("Orders.jsp");
+	
+	   httpSession.setAttribute("pid", pid);
+	   httpSession.setAttribute("pqt", qr);
+	 response.sendRedirect("authorize_payment");
 	}
 }
 catch(Exception E)

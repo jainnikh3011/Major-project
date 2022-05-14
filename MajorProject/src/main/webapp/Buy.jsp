@@ -46,7 +46,7 @@
 	
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
-		conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/drugdatabase","root","Change@3011");
+				conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/drugdatabase","ashu","ashu14mysql");
 		ps=conn.prepareStatement(query);
 		rs=ps.executeQuery();
 		%><div class="filler2"></div>

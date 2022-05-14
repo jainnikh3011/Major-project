@@ -38,15 +38,19 @@
     <div class="filler"></div>
     <%
     int flag=0;
-	ResultSet rs=null;
+	ResultSet rs=null;  ResultSet rs1=null;PreparedStatement ps=null;
 	CallableStatement cs=null;
 	java.sql.Connection conn=null;
 	try{
 		Class.forName("com.mysql.jdbc.Driver");
-		conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/drugdatabase","root","Change@3011");
+				conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/drugdatabase","ashu","ashu14mysql");
 		cs = conn.prepareCall("call getsellerorders(?)");
 		cs.setString(1, guid);
 		rs = cs.executeQuery();
+		
+		
+		String query="select fname,phno from customer where uid=?";
+		
 		%><div class="filler2"></div>
 		<table class="tables">
 			<tr>
@@ -54,7 +58,7 @@
     			<th>Product ID</th>
     			<th>Price</th>
     			<th>Quantity</th>
-    			<th>CUSTOMER ID</th>
+    			<th>CUSTOMER Name & Contact</th>
     			<th>Order Date and Time</th>
   			</tr>
 		<%while(rs.next()) 
@@ -66,7 +70,20 @@
     			<td><%=rs.getString("pid") %></td>
     			<td><%=rs.getInt("price") %></td>
     			<td><%=rs.getInt("quantity") %></td>
-    			<td><%=rs.getString("uid") %></td>
+    	<% 		
+    	        ps=conn.prepareStatement(query);
+
+    			ps.setString(1,rs.getString("uid"));
+		        rs1=ps.executeQuery();
+		     if(rs1.next())
+		    {
+		    	 %>
+		    	 <td><%=rs1.getString("fname") %> , <%=rs1.getString("phno") %></td>
+		     
+		        <%  }   %>
+		               
+    			
+    		
     			<td><%=rs.getTimestamp("orderdatetime") %>
   			</tr>
   			

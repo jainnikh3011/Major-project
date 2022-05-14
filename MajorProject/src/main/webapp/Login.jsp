@@ -26,7 +26,7 @@
 		String query1="SELECT uid,pass from customer WHERE uid=?";
 		try{
 		Class.forName("com.mysql.jdbc.Driver");
-		conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/drugdatabase","root","Change@3011");
+				conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/drugdatabase","ashu","ashu14mysql");
 		if(u==2)
 		{ 
 			ps=conn.prepareStatement(query2);
